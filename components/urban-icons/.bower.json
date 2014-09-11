@@ -1,0 +1,31 @@
+{
+  "name": "urban-icons",
+  "version": "0.2.1",
+  "authors": [
+    "Matt Styles <@veryfizzyjelly>"
+  ],
+  "description": "Set of icons to use with urban components.",
+  "keywords": "polymer, web-components, personal-urban, urban, icons",
+  "main": "urban-icons.html",
+  "license": "MIT",
+  "homepage": "https://github.com/mattstyles/urban-icons/",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.4.0 <1.0.0",
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3",
+    "core-iconset": "Polymer/core-iconset#>=0.3.5 <1.0.0",
+    "core-iconset-svg": "Polymer/core-iconset-svg#>=0.3.5 <1.0.0"
+  },
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.1",
+    "commit": "cde37aa621f6695cd15cc3b1a6d0ca216b14e335"
+  },
+  "_source": "git://github.com/mattstyles/urban-icons.git",
+  "_target": "~0.2.1",
+  "_originalSource": "urban-icons",
+  "_direct": true
+}

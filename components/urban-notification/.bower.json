@@ -1,0 +1,29 @@
+{
+  "name": "urban-notification",
+  "version": "0.1.1",
+  "authors": [
+    "Matt Styles <@personalurban>"
+  ],
+  "description": "Animating notification element",
+  "keywords": "notify, notification, urban, polymer, web-components, web-animations",
+  "main": "urban-notification.html",
+  "license": "MIT",
+  "homepage": "https://github.com/mattstyles/urban-notification/",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.4.0 <1.0.0",
+    "web-animations-js": "git://github.com/web-animations/web-animations-js.git"
+  },
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.1",
+    "commit": "608a9420be3e31f0c766f57e0d9d18d2094f8862"
+  },
+  "_source": "git://github.com/mattstyles/urban-notification.git",
+  "_target": "~0.1.1",
+  "_originalSource": "urban-notification",
+  "_direct": true
+}

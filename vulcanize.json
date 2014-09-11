@@ -1,0 +1,8 @@
+{
+  "excludes": {
+    "imports": [
+      "polymer.html"
+    ]
+  }
+}
+

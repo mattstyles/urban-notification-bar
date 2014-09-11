@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>urban-icons Demo</title>
+
+    <script src="../platform/platform.js"></script>
+    <link rel="import" href="../core-icon/core-icon.html">
+    <link rel="import" href="../core-iconset-svg/core-iconset-svg.html">
+
+    <link rel="import" href="./urban-icons.html">
+    <style media="screen">
+        body {
+            font-family: 'Helvetica Neue', 'Helvetica', 'Lucida Grande', Tahoma, sans-serif;
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+            padding: 30px;
+        }
+    </style>
+
+    <style media="screen">
+        .icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .icon svg {
+            fill: #333;
+        }
+
+        .icon:hover svg {
+            fill: #CF000F;
+        }
+    </style>
+
+</head>
+<body unresolved>
+
+    <p>An example of using <code>&lt;urban-icons></code>:</p>
+
+    <urban-icons></urban-icons>
+
+    <core-icon class="icon" icon="urban:loading"></core-icon>
+    <core-icon class="icon" icon="urban:attention"></core-icon>
+
+</body>
+</html>

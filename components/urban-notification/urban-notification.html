@@ -1,0 +1,31 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Animating notification element.
+
+##### Example
+
+    <urban-notification></urban-notification>
+
+@element urban-notification
+@blurb Element that animates its light DOM in and out of view.
+@status alpha
+@homepage http://mattstyles.github.io/urban-notification
+-->
+<polymer-element name="urban-notification">
+
+    <template>
+
+        <link rel="stylesheet" href="urban-notification.css" />
+
+        <div id="container" class="transparent">
+            <content></content>
+        </div>
+
+    </template>
+
+    <script src="../web-animations-js/web-animations.js"></script>
+    <script src="./anims.js"></script>
+    <script src="./urban-notification.js"></script>
+
+</polymer-element>

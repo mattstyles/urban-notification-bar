@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>Urban-notification Demo</title>
+
+    <script src="../platform/platform.js"></script>
+
+    <link rel="import" href="urban-notification.html">
+    <link rel="import" href="../urban-icons/urban-icons.html">
+    <link rel="import" href="../core-icon/core-icon.html">
+
+    <style media="screen">
+        body {
+            font-family: 'Helvetica Neue', Helvetica, 'Lucida Grande', Tahoma, 'Droid Sans', sans-serif;
+            font-size: 15px;
+            color: #3a3a3a;
+            -webkit-font-smoothing: antialiased;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        h3 {
+            margin-top: 2em;
+        }
+
+        h3 span {
+            font-size: 13px;
+            font-weight: 400;
+            color: #888;
+        }
+
+        h3 a {
+            padding: 0 3px;
+        }
+
+        h3 a:hover {
+            cursor: pointer;
+            color: #222;
+        }
+
+        h3 a:active {
+            text-shadow: 0px 2px 1px rgba( 0, 0, 0, .25 );
+        }
+
+        .wrap {
+            font-weight: 400;
+            font-size: 14px;
+            color: #333;
+            display:inline-block;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        core-icon + span {
+            margin-left: 8px;
+        }
+
+        #icon .wrap{
+            color: #ed4938;
+        }
+
+        #icon core-icon {
+            width: 20px;
+            height: 20px;
+            top: -1px;
+        }
+
+        #multi span {
+            display:inline-block;
+        }
+
+        #circles {
+            width: 280px;
+            height: 100px;
+            background:#efeee8;
+        }
+
+        #circles span {
+            position: absolute;
+            display: inline-block;
+            border-radius: 50%;
+            width:20px;
+            height:20px;
+            transform-origin: 50% 50%;
+            z-index: 1;
+        }
+
+        #circles span:hover {
+            transform: scale(2) !important;
+            z-index: 10;
+        }
+
+        #circles.show span {
+            transition: transform .2s linear;
+        }
+
+    </style>
+
+</head>
+<body unresolved>
+
+    <p>An example of using <code>&lt;urban-notification></code>:</p>
+
+    <div class="container">
+
+        <urban-icons></urban-icons>
+
+        <h3>Simple notification <span><a data-target="#notification" data-action="show">show</a>|<a data-target="#notification" data-action="hide">hide</a></span></h3>
+        <urban-notification id="notification">
+            <div class="inline">This is a notification<a href="#winning">hashtag winning</a></div>
+
+        </urban-notification>
+
+        <h3>Notification with more complex content <span><a data-target="#icon" data-action="show">show</a>|<a data-target="#icon" data-action="hide">hide</a></span></h3>
+        <urban-notification id="icon">
+            <div class="wrap">
+                <core-icon icon="urban:attention"></core-icon><span>This is a notification</span>
+            </div>
+        </urban-notification>
+
+        <h3>Notification with multiple content roots <span><a data-target="#multi" data-action="show">show</a>|<a data-target="#multi" data-action="hide">hide</a></span></h3>
+        <urban-notification id="multi">
+            <span>N</span><span>o</span><span>t</span><span>i</span><span>f</span><span>i</span><span>c</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span>
+        </urban-notification>
+
+        <h3>Colourful circles <span><a data-target="#circles" data-action="show">show</a>|<a data-target="#circles" data-action="hide">hide</a></span></h3>
+        <urban-notification id="circles">
+            <span style="top:20px;left:20px;background:#ed5422;"></span>
+            <span style="top:62px;left:260px;background:#F22613;"></span>
+            <span style="top:40px;left:240px;background:#C0392B;"></span>
+            <span style="top:70px;left:200px;background:#CF000F;"></span>
+            <span style="top:80px;left:100px;background:#D2527F;"></span>
+            <span style="top:50px;left:120px;background:#F64747;"></span>
+            <span style="top:60px;left:142px;background:#E26A6A;"></span>
+            <span style="top:25px;left:70px;background:#663399;"></span>
+            <span style="top:75px;left:230px;background:#9A12B3;"></span>
+            <span style="top:35px;left:50px;background:#9B59B6;"></span>
+            <span style="top:15px;left:255px;background:#52B3D9;"></span>
+            <span style="top:45px;left:192px;background:#22A7F0;"></span>
+            <span style="top:67px;left:27px;background:#3A539B;"></span>
+            <span style="top:10px;left:45px;background:#87D37C;"></span>
+            <span style="top:13px;left:124px;background:#26A65B;"></span>
+        </urban-notification>
+
+    </div>
+
+    <script charset="utf-8">
+        // For show|hide buttons
+        var actions = document.querySelectorAll( 'h3 a' );
+        Array.prototype.forEach.call( actions, function( el ) {
+            el.addEventListener( 'click', function( event ) {
+                var target = document.querySelector( this.dataset.target );
+                target[ this.dataset.action ]();
+            });
+        });
+
+        // For circles demo
+        var circles = document.querySelector( '#circles' );
+        circles.addEventListener( 'showEnd', function( event ) {
+            this.classList.add( 'show' )
+        });
+        circles.addEventListener( 'hideEnd', function( event ) {
+            this.classList.remove( 'show' );
+        });
+    </script>
+
+</body>
+</html>
