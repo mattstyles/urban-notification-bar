@@ -2,7 +2,7 @@
 
     var ANIM_OUT_SPD = 200,
         ANIM_IN_SPD = 400,
-        ANIM_DELAY = 50,
+        ANIM_DELAY = 100,
         ANIM_DELAY_MAG = .8,
         ANIM_EASING = 'cubic-bezier( .55, .87, .55, .92 )';
 

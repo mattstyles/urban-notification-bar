@@ -6,15 +6,15 @@ var frames;
 
     frames = {
         show: new KeyframeEffect([
-            { opacity: '0', transform: 'translateY( -20 )' },
-            { opacity: '0' },
-            { opacity: '1', transform: 'translateY( 0 )' }
+            { opacity: '0', transform: 'translate3d( 0, -20, 0 )' },
+            // { opacity: '0' },
+            { opacity: '1', transform: 'translate3d( 0, 0, 0 )' }
         ]),
 
         hide: new KeyframeEffect([
-            { opacity: '1', transform: 'translateY( 0 )' },
-            { opacity: '0', },
-            { opacity: '0', transform: 'translateY( -10 )' }
+            { opacity: '1', transform: 'translate3d( 0, 0, 0 )' },
+            // { opacity: '0', },
+            { opacity: '0', transform: 'translate3d( 0, -10, 0 )' }
         ]),
 
         // Controls the actual bar sliding in and out
