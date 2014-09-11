@@ -5,20 +5,13 @@
     top: 0;
     right: 0;
 
-    padding: 12px;
-    border-bottom: 4px solid #ccc;
     text-align: center;
+    padding: 12px;
+    background: #fffefc;
+    border-bottom: 4px solid #ccc;
 
     transform: translate3d( 0, -100%, 0 );
-}
-
-:host(.show) {
-    transform: translate3d( 0, 0, 0 );
-    background: #fffefc;
-}
-
-:host(.transition) {
-    transition: transform .177s linear;
+    -webkit-transform: translate3d( 0, -100%, 0 );
 }
 
 ::content .transparent,

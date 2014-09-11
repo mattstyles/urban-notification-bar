@@ -114,7 +114,7 @@
                 this,
                 frames.out, {
                     duration: ANIM_OUT_SPD,
-                    delay: ANIM_OUT_SPD * .2,
+                    delay: ANIM_OUT_SPD * .8,
                     fill: 'forwards',
                     easing: ANIM_EASING
                 }
