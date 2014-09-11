@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>Urban-notification Demo</title>
+
+    <script src="../platform/platform.js"></script>
+
+    <link rel="import" href="urban-notification-bar.html">
+
+    <style media="screen">
+        body {
+            font-family: 'Helvetica Neue', Helvetica, 'Lucida Grande', Tahoma, 'Droid Sans', sans-serif;
+            font-size: 15px;
+            color: #3a3a3a;
+            -webkit-font-smoothing: antialiased;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        h3 {
+            margin-top: 2em;
+        }
+
+        h3 span {
+            font-size: 13px;
+            font-weight: 400;
+            color: #888;
+        }
+
+        h3 a {
+            padding: 0 3px;
+        }
+
+        h3 a:hover {
+            cursor: pointer;
+            color: #222;
+        }
+
+        h3 a:active {
+            text-shadow: 0px 2px 1px rgba( 0, 0, 0, .25 );
+        }
+
+
+
+    </style>
+
+</head>
+<body unresolved>
+
+    <p>An example of using <code>&lt;urban-notification-bar></code>:</p>
+
+    <div class="container">
+
+        <urban-icons></urban-icons>
+
+        <h3>Simple notification <span><a data-target="#notification" data-action="show">show</a>|<a data-target="#notification" data-action="hide">hide</a></span></h3>
+        <urban-notification-bar id="notification">
+            <div class="inline">This is a notification</div>
+        </urban-notification-bar>
+
+        <h3>Notification with more complex content <span><a data-target="#icon" data-action="show">show</a>|<a data-target="#icon" data-action="hide">hide</a></span></h3>
+        <urban-notification id="icon">
+            <div class="wrap">
+                <core-icon icon="urban:attention"></core-icon><span>This is a notification</span>
+            </div>
+        </urban-notification>
+
+        <h3>Notification with multiple content roots <span><a data-target="#multi" data-action="show">show</a>|<a data-target="#multi" data-action="hide">hide</a></span></h3>
+        <urban-notification id="multi">
+            <span>N</span><span>o</span><span>t</span><span>i</span><span>f</span><span>i</span><span>c</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span>
+        </urban-notification>
+
+    </div>
+
+    <script charset="utf-8">
+        // For show|hide buttons
+        var actions = document.querySelectorAll( 'h3 a' );
+        Array.prototype.forEach.call( actions, function( el ) {
+            el.addEventListener( 'click', function( event ) {
+                var target = document.querySelector( this.dataset.target );
+                target[ this.dataset.action ]();
+            });
+        });
+    </script>
+
+</body>
+</html>
