@@ -58,7 +58,8 @@
                 this,
                 frames.in, {
                     duration: ANIM_IN_SPD,
-                    fill: 'forwards'
+                    fill: 'forwards',
+                    easing: 'ease-out'
                 }
             ));
 
@@ -69,7 +70,8 @@
                         duration: ANIM_IN_SPD,
                         // delay: ANIM_DELAY * index,
                         delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ) + ( ANIM_IN_SPD * .4 ),
-                        fill: 'forwards'
+                        fill: 'forwards',
+                        easing: 'ease-out'
                     }
                 ));
             });
@@ -101,7 +103,8 @@
                         duration: ANIM_OUT_SPD,
                         // delay: ANIM_DELAY * index,
                         delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ),
-                        fill: 'forwards'
+                        fill: 'forwards',
+                        easing: 'ease-out'
                     }
                 ));
             }, this );
@@ -111,7 +114,8 @@
                 frames.out, {
                     duration: ANIM_OUT_SPD,
                     delay: ANIM_OUT_SPD,
-                    fill: 'forwards'
+                    fill: 'forwards',
+                    easing: 'ease-out'
                 }
             ));
 
