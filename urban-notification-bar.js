@@ -1,9 +1,10 @@
 (function( root ) {
 
-    var ANIM_OUT_SPD = 100,
-        ANIM_IN_SPD = 200,
+    var ANIM_OUT_SPD = 200,
+        ANIM_IN_SPD = 400,
         ANIM_DELAY = 50,
-        ANIM_DELAY_MAG = .8;
+        ANIM_DELAY_MAG = .8,
+        ANIM_EASING = 'cubic-bezier( .55, .87, .55, .92 )';
 
 
     Polymer( 'urban-notification-bar', {
@@ -59,7 +60,7 @@
                 frames.in, {
                     duration: ANIM_IN_SPD,
                     fill: 'forwards',
-                    easing: 'ease-out'
+                    easing: ANIM_EASING
                 }
             ));
 
@@ -69,9 +70,9 @@
                     frames.show, {
                         duration: ANIM_IN_SPD,
                         // delay: ANIM_DELAY * index,
-                        delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ) + ( ANIM_IN_SPD * .4 ),
+                        delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ) + ( ANIM_IN_SPD * .2 ),
                         fill: 'forwards',
-                        easing: 'ease-out'
+                        easing: ANIM_EASING
                     }
                 ));
             });
@@ -104,7 +105,7 @@
                         // delay: ANIM_DELAY * index,
                         delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ),
                         fill: 'forwards',
-                        easing: 'ease-out'
+                        easing: ANIM_EASING
                     }
                 ));
             }, this );
@@ -113,9 +114,9 @@
                 this,
                 frames.out, {
                     duration: ANIM_OUT_SPD,
-                    delay: ANIM_OUT_SPD,
+                    delay: ANIM_OUT_SPD * .2,
                     fill: 'forwards',
-                    easing: 'ease-out'
+                    easing: ANIM_EASING
                 }
             ));
 
