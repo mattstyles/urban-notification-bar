@@ -121,11 +121,11 @@
             ));
 
             var anim = document.timeline.play( new AnimationGroup( anims ) );
+            this._showing = false;
             this.fire( 'hideStart' );
 
             // Last to start will be last to finish so listen for the last one
             anim.onfinish = function( event ) {
-                this._showing = false;
                 this.fire( 'hideEnd' );
             }.bind( this );
         }
