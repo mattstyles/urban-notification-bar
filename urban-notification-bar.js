@@ -34,7 +34,6 @@
          */
         ready: function() {
             this.super();
-            // this.classList.add( 'transition' );
         },
 
 
@@ -69,7 +68,6 @@
                     el,
                     frames.show, {
                         duration: ANIM_IN_SPD,
-                        // delay: ANIM_DELAY * index,
                         delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ) + ( ANIM_IN_SPD * .2 ),
                         fill: 'forwards',
                         easing: ANIM_EASING
