@@ -2,12 +2,19 @@
 
     var ANIM_OUT_SPD = 200,
         ANIM_IN_SPD = 400,
-        ANIM_DELAY = 100,
-        ANIM_DELAY_MAG = .8,
+        ANIM_DELAY_MAG = 50,
         ANIM_EASING = 'cubic-bezier( .55, .87, .55, .92 )';
 
 
     Polymer( 'urban-notification-bar', {
+
+        /**
+         * The cached total length of the animation, usually this will be determined by the number of content roots to be animated
+         *
+         * @type {Integer}
+         */
+        animationDuration: ANIM_DELAY_MAG,
+
 
         /**
          * Published properties
@@ -34,7 +41,6 @@
          */
         ready: function() {
             this.super();
-            // this.classList.add( 'transition' );
         },
 
 
@@ -69,13 +75,12 @@
                     el,
                     frames.show, {
                         duration: ANIM_IN_SPD,
-                        // delay: ANIM_DELAY * index,
-                        delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ) + ( ANIM_IN_SPD * .2 ),
+                        delay: this.$.bezier.calc( ( index + 1 ) / this.contents.length ) * this.animationDuration,
                         fill: 'forwards',
                         easing: ANIM_EASING
                     }
                 ));
-            });
+            }, this );
 
             var anim = document.timeline.play( new AnimationGroup( anims ) );
 
@@ -102,8 +107,7 @@
                     this.contents[ this.contents.length - index - 1 ],
                     frames.hide, {
                         duration: ANIM_OUT_SPD,
-                        // delay: ANIM_DELAY * index,
-                        delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ),
+                        delay: this.$.bezier.calc( ( index + 1 ) / this.contents.length ) * this.animationDuration,
                         fill: 'forwards',
                         easing: ANIM_EASING
                     }
@@ -121,11 +125,11 @@
             ));
 
             var anim = document.timeline.play( new AnimationGroup( anims ) );
+            this._showing = false;
             this.fire( 'hideStart' );
 
             // Last to start will be last to finish so listen for the last one
             anim.onfinish = function( event ) {
-                this._showing = false;
                 this.fire( 'hideEnd' );
             }.bind( this );
         }

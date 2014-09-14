@@ -1,6 +1,6 @@
 {
   "name": "urban-icons",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "authors": [
     "Matt Styles <@veryfizzyjelly>"
   ],
@@ -18,14 +18,14 @@
     "core-iconset": "Polymer/core-iconset#>=0.3.5 <1.0.0",
     "core-iconset-svg": "Polymer/core-iconset-svg#>=0.3.5 <1.0.0"
   },
-  "_release": "0.2.1",
+  "_release": "0.2.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.2.1",
-    "commit": "cde37aa621f6695cd15cc3b1a6d0ca216b14e335"
+    "tag": "0.2.2",
+    "commit": "e315bf41fc5a601f43043304b69d8283d47c2eac"
   },
   "_source": "git://github.com/mattstyles/urban-icons.git",
-  "_target": "~0.2.1",
+  "_target": "~0.2.2",
   "_originalSource": "urban-icons",
   "_direct": true
 }
