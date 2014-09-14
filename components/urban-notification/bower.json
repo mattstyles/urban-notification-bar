@@ -1,6 +1,6 @@
 {
   "name": "urban-notification",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "authors": [
     "Matt Styles <@personalurban>"
   ],
@@ -14,6 +14,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#>=0.4.0 <1.0.0",
-    "web-animations-js": "git://github.com/web-animations/web-animations-js.git"
+    "web-animations-js": "git://github.com/web-animations/web-animations-js.git",
+    "bezier-easing": "~1.0.0"
   }
 }

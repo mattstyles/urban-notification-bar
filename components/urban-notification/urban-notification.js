@@ -2,8 +2,7 @@
 
     var ANIM_OUT_SPD = 100,
         ANIM_IN_SPD = 200,
-        ANIM_DELAY = 50,
-        ANIM_DELAY_MAG = .8;
+        ANIM_DELAY_MAG = 50;
 
 
     Polymer( 'urban-notification', {
@@ -14,6 +13,14 @@
          * @type {Array}
          */
         contents: null,
+
+
+        /**
+         * The cached total length of the animation, usually this will be determined by the number of content roots to be animated
+         *
+         * @type {Integer}
+         */
+        animationDuration: ANIM_DELAY_MAG,
 
 
         /**
@@ -36,12 +43,11 @@
          *
         \*-----------------------------------------------------------*/
 
+
         /**
          * Fired when Polymer has got the element ready
          */
         ready: function() {
-
-            // Simple dirty bindAll method so any methods invoked as a callback maintain scope to this object
             this.bindAll( this );
         },
 
@@ -50,19 +56,8 @@
          * Light DOM should be ready by now so grab all the relevant child nodes
          */
         attached: function() {
-            this.contents = [];
-
-            // Iterate over each content tag
-            Array.prototype.forEach.call( this.$.container.querySelectorAll( 'content' ), function( content ) {
-                // Iterate over each root node distributed into content
-                Array.prototype.forEach.call( content.getDistributedNodes(), function( el ) {
-                    // Only keep track of elements.
-                    if ( el.nodeType === 1 ) {
-                        el.classList.add( 'transparent' );
-                        this.contents.push( el );
-                    }
-                }, this );
-            }, this );
+            // This intially populated the contents cache and sets up an observer
+            this.updateContent();
         },
 
 
@@ -107,17 +102,17 @@
             this.$.container.classList.remove( 'transparent' );
 
             var anims = [];
+
             this.contents.forEach( function( el, index ) {
                 anims.push( new Animation(
                     el,
                     frames.show, {
                         duration: ANIM_IN_SPD,
-                        // delay: ANIM_DELAY * index,
-                        delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ),
+                        delay: this.$.bezier.calc( ( index + 1 ) / this.contents.length ) * this.animationDuration,
                         fill: 'forwards'
                     }
                 ));
-            });
+            }, this );
 
             var anim = document.timeline.play( new AnimationGroup( anims ) );
 
@@ -144,8 +139,7 @@
                     this.contents[ this.contents.length - index - 1 ],
                     frames.hide, {
                         duration: ANIM_OUT_SPD,
-                        // delay: ANIM_DELAY * index,
-                        delay: ANIM_DELAY * ( Math.sqrt( index ) * ANIM_DELAY_MAG ),
+                        delay: this.$.bezier.calc( ( index + 1 ) / this.contents.length ) * this.animationDuration,
                         fill: 'forwards'
                     }
                 ));
@@ -182,11 +176,41 @@
                     try {
                         this[ method ] = this[ method ].bind( ctx );
                     } catch( err ) {
-                        console.log( 'urban-login:: method binding error', method, err );
+                        console.log( this.element.name + '::', 'method binding error\n', method, err );
                     }
                 }
             }
+        },
+
+
+        /**
+         * Fired whenever the content of the element changes.
+         * Ensures that the content cache is synced.
+         */
+        updateContent: function( observer, mutations ) {
+            this.contents = [];
+
+            // Iterate over each content tag
+            Array.prototype.forEach.call( this.$.container.querySelectorAll( 'content' ), function( content ) {
+                // Iterate over each root node distributed into content
+                Array.prototype.forEach.call( content.getDistributedNodes(), function( el ) {
+                    // Only keep track of elements.
+                    if ( el.nodeType === 1 ) {
+                        el.classList.add( 'transparent' );
+                        this.contents.push( el );
+                    }
+                }, this );
+            }, this );
+
+            this.fire( 'contentUpdated' );
+
+            // Update the cached animation duration based on the number of content roots
+            this.animationDuration = this.contents.length * ANIM_DELAY_MAG;
+
+            // Reattach
+            this.onMutation( this, this.updateContent );
         }
+
 
     });
 

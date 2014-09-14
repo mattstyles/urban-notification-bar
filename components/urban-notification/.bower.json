@@ -1,6 +1,6 @@
 {
   "name": "urban-notification",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "authors": [
     "Matt Styles <@personalurban>"
   ],
@@ -14,16 +14,17 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#>=0.4.0 <1.0.0",
-    "web-animations-js": "git://github.com/web-animations/web-animations-js.git"
+    "web-animations-js": "git://github.com/web-animations/web-animations-js.git",
+    "bezier-easing": "~1.0.0"
   },
-  "_release": "0.1.1",
+  "_release": "0.3.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.1.1",
-    "commit": "608a9420be3e31f0c766f57e0d9d18d2094f8862"
+    "tag": "0.3.0",
+    "commit": "eb8e17aea65872fb7c1b2efe0fc2e5ea95c1ca71"
   },
   "_source": "git://github.com/mattstyles/urban-notification.git",
-  "_target": "~0.1.1",
+  "_target": "~0.3.0",
   "_originalSource": "urban-notification",
   "_direct": true
 }

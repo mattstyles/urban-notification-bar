@@ -101,6 +101,28 @@
             transition: transform .2s linear;
         }
 
+        #vertical p {
+            margin-top: 0;
+            margin-bottom: .5em;
+        }
+
+        #vertical h4 {
+            margin-top: .25em;
+            margin-bottom: .75em;
+        }
+
+        #vertical span {
+            font-weight: 600;
+        }
+
+        .purple {
+            color: #7D397A;
+        }
+
+        .magenta {
+            color: #E81D62;
+        }
+
     </style>
 
 </head>
@@ -114,8 +136,7 @@
 
         <h3>Simple notification <span><a data-target="#notification" data-action="show">show</a>|<a data-target="#notification" data-action="hide">hide</a></span></h3>
         <urban-notification id="notification">
-            <div class="inline">This is a notification<a href="#winning">hashtag winning</a></div>
-
+            <div class="inline">This is a notification</div>
         </urban-notification>
 
         <h3>Notification with more complex content <span><a data-target="#icon" data-action="show">show</a>|<a data-target="#icon" data-action="hide">hide</a></span></h3>
@@ -147,6 +168,13 @@
             <span style="top:67px;left:27px;background:#3A539B;"></span>
             <span style="top:10px;left:45px;background:#87D37C;"></span>
             <span style="top:13px;left:124px;background:#26A65B;"></span>
+        </urban-notification>
+
+        <h3>Vertical blocks <span><a data-target="#vertical" data-action="show">show</a>|<a data-target="#vertical" data-action="hide">hide</a></span></h3>
+        <urban-notification id="vertical">
+            <h4>Polymer &#10084's you.</h4>
+            <p><span class="magenta">Web components</span> are the bomb.</p>
+            <p><span class="purple">Polymer</span> is awesome.</p>
         </urban-notification>
 
     </div>
