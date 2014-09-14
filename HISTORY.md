@@ -1,3 +1,7 @@
+## 0.2.1 - 14.09.14
+
+* _fix_ - explicitly declare bezier-easing dependency
+
 ## 0.2.0 - 14.09.14
 
 * _add_ - smooth out delayed animations
