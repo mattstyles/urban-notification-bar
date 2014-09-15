@@ -63,7 +63,7 @@
             var anims = [];
             anims.push( new Animation(
                 this,
-                frames.in, {
+                this.frames.in, {
                     duration: ANIM_IN_SPD,
                     fill: 'forwards',
                     easing: ANIM_EASING
@@ -73,7 +73,7 @@
             this.contents.forEach( function( el, index ) {
                 anims.push( new Animation(
                     el,
-                    frames.show, {
+                    this.frames.show, {
                         duration: ANIM_IN_SPD,
                         delay: this.$.bezier.calc( ( index + 1 ) / this.contents.length ) * this.animationDuration,
                         fill: 'forwards',
@@ -105,7 +105,7 @@
             this.contents.forEach( function( el, index ) {
                 anims.push( new Animation(
                     this.contents[ this.contents.length - index - 1 ],
-                    frames.hide, {
+                    this.frames.hide, {
                         duration: ANIM_OUT_SPD,
                         delay: this.$.bezier.calc( ( index + 1 ) / this.contents.length ) * this.animationDuration,
                         fill: 'forwards',
@@ -116,7 +116,7 @@
 
             anims.push( new Animation(
                 this,
-                frames.out, {
+                this.frames.out, {
                     duration: ANIM_OUT_SPD,
                     delay: ANIM_OUT_SPD * .8,
                     fill: 'forwards',
@@ -132,6 +132,41 @@
             anim.onfinish = function( event ) {
                 this.fire( 'hideEnd' );
             }.bind( this );
+        },
+
+
+        /*-----------------------------------------------------------*\
+         *
+         *  Helpers
+         *
+        \*-----------------------------------------------------------*/
+
+        /**
+         * Creates the animation frames
+         */
+        createAnimationFrames: function() {
+            this.frames = {
+                show: new KeyframeEffect([
+                    { opacity: '0', transform: 'translate3d( 0, -20, 0 )' },
+                    { opacity: '1', transform: 'translate3d( 0, 0, 0 )' }
+                ]),
+
+                hide: new KeyframeEffect([
+                    { opacity: '1', transform: 'translate3d( 0, 0, 0 )' },
+                    { opacity: '0', transform: 'translate3d( 0, -10, 0 )' }
+                ]),
+
+                // Controls the actual bar sliding in and out
+                in: new KeyframeEffect([
+                    { transform: 'translate3d(0,-100%,0)' },
+                    { transform: 'translate3d(0,0,0)' }
+                ]),
+
+                out: new KeyframeEffect([
+                    { transform: 'translate3d(0,0,0)' },
+                    { transform: 'translate3d(0,-100%,0)' }
+                ])
+            };
         }
 
     });
