@@ -1,3 +1,7 @@
+## 0.2.2 - 15.09.2014
+
+* _fix_ - remove anims leaking to global
+
 ## 0.2.1 - 14.09.14
 
 * _fix_ - explicitly declare bezier-easing dependency
